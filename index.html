@@ -1,0 +1,257 @@
+
+
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Enter into a fun lottery and win some
+    ethereum!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Decentralised Lottery</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Distributed Lottery Game">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.teal-red.min.css">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+
+      <br/>
+<br/>
+<br/>
+
+<br/>
+
+
+      <main class="demo-main mdl-layout__content" style="margin-top:3%">
+        <div class="demo-container mdl-grid">
+
+
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+
+           <span id="bet_cd">Initialising...</span> 
+            <br />
+                        <br />
+            <br />
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">NO. TO PLAY</th>
+    <th scope="col">NO. OF BETS</th>
+      <th scope="col">BET AMOUNT (ETH)</th>
+      <th scope="col">STAKE</th>
+    <th scope="col">PLAY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td id="no_bets_1">0</td>
+      <td> 0.1</td>
+      <td> <input type="number"  value=1 style="width:50%" class="form-control" id="stake_input_1"  placeholder="2"></td>
+    <td> <button type="button" onClick='perform_purchase(1);' class="btn btn-danger">Bet</button></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td id="no_bets_2">0</td>
+      <td> 0.1</td>
+      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_2"  placeholder="2"></td>
+    <td> <button type="button" onClick='perform_purchase(2);' oninvalid=""class="btn btn-danger">Bet</button></td>
+
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td id="no_bets_3">0</td>
+      <td> 0.1</td>
+      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_3"  placeholder="2"></td>
+    <td> <button type="button" onClick='perform_purchase(3);' class="btn btn-danger">Bet</button></td>
+
+    </tr>
+     <tr>
+      <th scope="row">4</th>
+      <td id="no_bets_4">0</td>
+      <td> 0.1</td>
+      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_4"  placeholder="2"></td>
+    <td> <button type="button" onClick='perform_purchase(4);' class="btn btn-danger">Bet</button></td>
+
+    </tr>
+ <tr>
+  <th scope="row">5</th>
+      <td id="no_bets_5">0</td>
+  <td> 0.1</td>
+  <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_5"  placeholder="2"></td>
+<td> <button type="button" onClick='perform_purchase(5);' class="btn btn-danger">Bet</button></td>
+
+</tr>
+
+     <tr>
+      <th scope="row">6</th>
+      <td id="no_bets_6">0</td>
+      <td> 0.1</td>
+      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_6"  placeholder="2"></td>
+    <td> <button type="button" onClick='perform_purchase(6);' class="btn btn-danger">Bet</button></td>
+
+    </tr>
+     <tr>
+      <th scope="row">7</th>
+      <td id="no_bets_7">0</td>
+      <td> 0.1</td>
+      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_7"  placeholder="2"></td>
+    <td> <button type="button" onClick='perform_purchase(7);' class="btn btn-danger">Bet</button></td>
+
+    </tr>
+     <tr>
+      <th scope="row">8</th>
+      <td id="no_bets_8">0</td>
+      <td> 0.1</td>
+      <td> <input type="number" value=1  style="width:50%" class="form-control" id="stake_input_8"  placeholder="2"></td>
+    <td> <button type="button" onClick='perform_purchase(8);' class="btn btn-danger">Bet</button></td>
+
+    </tr>
+
+     <tr>
+      <th scope="row">9</th>
+      <td id="no_bets_9">0</td>
+      <td> 0.1</td>
+      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_9"  placeholder="2"></td>
+    <td> <button type="button" onClick='perform_purchase(9);' class="btn btn-danger">Bet</button></td>
+
+    </tr>
+
+     <tr>
+      <th scope="row">10</th>
+      <td id="no_bets_10">0</td>
+      <td> 0.1</td>
+      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_10"  placeholder="2"></td>
+    <td> <button type="button" onClick='perform_purchase(10);' class="btn btn-danger">Bet</button></td>
+
+    </tr>
+  </tbody>
+</table>
+
+            <div align="center">
+
+                <div class="mdl-textfield mdl-js-textfield
+                mdl-textfield--floating-label" style="width:95%">
+
+                </div>
+
+                <br />
+                           </div>
+            <br />
+            <hr>
+            <h3>Guaranteed Win</h3>
+            <p>Want to win some money no matter what?</p>
+            <p>Be the first person to help us perform the lottery draw and you will be <b><u>guaranteed to win 5% of the pool!</u></b></p>
+            <div align="center">
+                <button class="mdl-button mdl-js-button mdl-button--raised
+                        mdl-js-ripple-effect mdl-button--accent" disabled style="width: 95%"
+                    id="draw_button" onclick="perform_drawing()">
+                    Draw
+                </button>
+            </div>
+          </div>
+        </div>
+        <footer class="demo-footer mdl-mini-footer">
+          <div class="mdl-mini-footer--left-section">
+            <ul class="mdl-mini-footer--link-list">
+              <!--
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Privacy and Terms</a></li>
+              <li><a href="#">User Agreement</a></li>
+              -->
+            </ul>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+          <div class="mdl-snackbar__text" align="center"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="javascripts/excanvas.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="javascripts/segment-display.js"></script>
+    <script type="text/javascript" src="javascripts/humanize-duration.js"></script>
+        <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+      var display = new SegmentDisplay("display");
+      display.pattern         = "##################"
+      display.displayAngle    = 6;
+      display.digitHeight     = 38;
+      display.digitWidth      = 22.5;
+      display.digitDistance   = 2.5;
+      display.segmentWidth    = 3.4;
+      display.segmentDistance = 0.5;
+      display.segmentCount    = 14;
+      display.cornerType      = 3;
+      display.colorOn         = "#2479ff";
+      display.colorOff        = "#232639";
+      display.draw();
+      display.setValue("000000000000000 SZ");
+    </script>
+    <script type="text/javascript" src="./app.js"></script>
+  </body>
+</html>
