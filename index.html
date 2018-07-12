@@ -81,10 +81,30 @@
           <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
           <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
 
-           <span id="bet_cd">Initialising...</span> 
+           <span id="bet_cd">Initialising...</span>
             <br />
                         <br />
             <br />
+
+<form id="bet_form" class="form-inline">
+  <div class="form-group mb-2">
+    <label for="bet_no" class="sr-only">Number</label>
+    <input type="number" class="form-control-plaintext" id="bet_no" placeholder="Bet Number">
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="stake" class="sr-only">Stake</label>
+    <input type="number" class="form-control-plaintext" id="stake" placeholder="Stake">
+  </div>
+
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="stake" class="sr-only">Bet Amount</label>
+      <input type="number" class="form-control-plaintext" id="bet_amount" placeholder="Bet Amount">
+    </div>
+
+  <button onClick="perform_purchase()" class="btn btn-danger mb-2">Bet</button>
+</form>
+</br>
+
 
 
 <table class="table">
@@ -93,91 +113,75 @@
       <th scope="col">NO. TO PLAY</th>
     <th scope="col">NO. OF BETS</th>
       <th scope="col">BET AMOUNT (ETH)</th>
-      <th scope="col">STAKE</th>
-    <th scope="col">PLAY</th>
+
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
       <td id="no_bets_1">0</td>
-      <td> 0.1</td>
-      <td> <input type="number"  value=1 style="width:50%" class="form-control" id="stake_input_1"  placeholder="2"></td>
-    <td> <button type="button" onClick='perform_purchase(1);' class="btn btn-danger">Bet</button></td>
+      <td id="bet_amount_1"> 0.1</td>
+
     </tr>
     <tr>
       <th scope="row">2</th>
       <td id="no_bets_2">0</td>
-      <td> 0.1</td>
-      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_2"  placeholder="2"></td>
-    <td> <button type="button" onClick='perform_purchase(2);' oninvalid=""class="btn btn-danger">Bet</button></td>
+      <td id="bet_amount_2"> 0.1</td>
 
     </tr>
     <tr>
       <th scope="row">3</th>
       <td id="no_bets_3">0</td>
-      <td> 0.1</td>
-      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_3"  placeholder="2"></td>
-    <td> <button type="button" onClick='perform_purchase(3);' class="btn btn-danger">Bet</button></td>
+      <td id="bet_amount_3"> 0.1</td>
 
     </tr>
      <tr>
       <th scope="row">4</th>
       <td id="no_bets_4">0</td>
-      <td> 0.1</td>
-      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_4"  placeholder="2"></td>
-    <td> <button type="button" onClick='perform_purchase(4);' class="btn btn-danger">Bet</button></td>
+      <td id="bet_amount_4"> 0.1</td>
 
     </tr>
  <tr>
   <th scope="row">5</th>
       <td id="no_bets_5">0</td>
-  <td> 0.1</td>
-  <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_5"  placeholder="2"></td>
-<td> <button type="button" onClick='perform_purchase(5);' class="btn btn-danger">Bet</button></td>
+  <td id="bet_amount_5"> 0.1</td>
 
 </tr>
 
      <tr>
       <th scope="row">6</th>
       <td id="no_bets_6">0</td>
-      <td> 0.1</td>
-      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_6"  placeholder="2"></td>
-    <td> <button type="button" onClick='perform_purchase(6);' class="btn btn-danger">Bet</button></td>
+      <td id="bet_amount_6"> 0.1</td>
 
     </tr>
      <tr>
       <th scope="row">7</th>
       <td id="no_bets_7">0</td>
-      <td> 0.1</td>
-      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_7"  placeholder="2"></td>
-    <td> <button type="button" onClick='perform_purchase(7);' class="btn btn-danger">Bet</button></td>
+      <td id="bet_amount_7"> 0.1</td>
+
 
     </tr>
      <tr>
       <th scope="row">8</th>
       <td id="no_bets_8">0</td>
-      <td> 0.1</td>
-      <td> <input type="number" value=1  style="width:50%" class="form-control" id="stake_input_8"  placeholder="2"></td>
-    <td> <button type="button" onClick='perform_purchase(8);' class="btn btn-danger">Bet</button></td>
+      <td id="bet_amount_8"> 0.1</td>
+
 
     </tr>
 
      <tr>
       <th scope="row">9</th>
       <td id="no_bets_9">0</td>
-      <td> 0.1</td>
-      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_9"  placeholder="2"></td>
-    <td> <button type="button" onClick='perform_purchase(9);' class="btn btn-danger">Bet</button></td>
+      <td id="bet_amount_9"> 0.1</td>
+
 
     </tr>
 
      <tr>
       <th scope="row">10</th>
       <td id="no_bets_10">0</td>
-      <td> 0.1</td>
-      <td> <input type="number" value=1 style="width:50%" class="form-control" id="stake_input_10"  placeholder="2"></td>
-    <td> <button type="button" onClick='perform_purchase(10);' class="btn btn-danger">Bet</button></td>
+      <td id="bet_amount_10"> 0.1</td>
+
 
     </tr>
   </tbody>

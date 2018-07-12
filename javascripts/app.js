@@ -27,9 +27,9 @@ window.addEventListener('load', function() {
 function startApp(web3) {
 
 web3 = new Web3(web3.currentProvider);
-abi = JSON.parse('[{"constant":false,"inputs":[],"name":"draw","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"total_bets","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"ticket_price","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"start_date","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"betting_period","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"transfer_amount","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"guess","type":"uint256"}],"name":"make_bet","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"waiting_period","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"name":"bets","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"organiser","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"upper_bound","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"bets_lengths","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"lower_bound","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"shutdown","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_betting_period","type":"uint256"},{"name":"_waiting_period","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_drawer","type":"address"},{"indexed":false,"name":"winning_number","type":"uint256"},{"indexed":false,"name":"num_winners","type":"uint256"}],"name":"Drawn","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_better","type":"address"},{"indexed":false,"name":"bet","type":"uint256"}],"name":"Betted","type":"event"}]');
+abi = JSON.parse('[{"constant":false,"inputs":[],"name":"draw","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"total_bets","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"ticket_price","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"start_date","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"betting_period","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"transfer_amount","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"bets_amount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"guess","type":"uint256"}],"name":"make_bet","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"waiting_period","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"name":"bets","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"organiser","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"upper_bound","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"bets_lengths","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"lower_bound","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"shutdown","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_betting_period","type":"uint256"},{"name":"_waiting_period","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_drawer","type":"address"},{"indexed":false,"name":"winning_number","type":"uint256"},{"indexed":false,"name":"num_winners","type":"uint256"}],"name":"Drawn","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_better","type":"address"},{"indexed":false,"name":"bet","type":"uint256"}],"name":"Betted","type":"event"}]');
 LotteryContract = web3.eth.contract(abi);
-Lottery = LotteryContract.at('0xa3fbc507fb704906b4333a4a693e376e207b0802');
+Lottery = LotteryContract.at('0x3689edcc3fcb23eddbbae038ec055b7d2e83afcd');
 
 
 }
@@ -332,14 +332,40 @@ function update_bets(i) {
 
 }
 
-function perform_purchase(guess) {
-    stake = $('#stake_input_'+guess).val();
+function update_bets_amount(i) {
+
+    Lottery.bets_amount.call(i, function(error,result){
+      if(error){
+        console.log(error);
+      }
+      if(result) {
+        $('#bet_amount_'+i).text(result/1000000000000000000);
+        if(i<10) {
+          update_bets_amount(i+1)
+        }
+      }
+    });
+
+}
+
+$('#bet_form').submit(function (evt) {
+    evt.preventDefault();
+});
+
+function perform_purchase() {
+    guess = $('#bet_no').val();
+    stake = $('#stake').val();
+    bet_amount = $('#bet_amount').val();
+console.log(guess);
+console.log(stake);
+console.log(bet_amount);
     Lottery.ticket_price.call(function(error,result){
        if(error) {
        console.log(error);
        }
        else {
-         price = result*stake;
+         price = web3.toWei(bet_amount*stake);
+         console.log(price);
          Lottery.make_bet.sendTransaction(guess, {from: account, value: price, gas: 1000000}, function(error,result){
       		 if(error)
       		  console.log(error);
@@ -378,6 +404,7 @@ function betted_callback(err, res) {
     init_draw_button();
     update_ticker();
     update_bets(1);
+    update_bets_amount(1);
 }
 
 function pick_for_me() {
@@ -413,5 +440,6 @@ window.onload = function() {
     add_event_watchers();
     pick_for_me();
     update_bets(1);
+    update_bets_amount(1);
   });
 }
